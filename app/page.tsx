@@ -1,3 +1,4 @@
+import Image from "next/image";
 import DeviceHero from "@/components/DeviceHero";
 
 const specs = [
@@ -47,14 +48,8 @@ export default function Home() {
 
       {/* NAV */}
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-5 border-b border-blue-500/10 backdrop-blur-md" style={{ background: 'rgba(5,10,26,0.85)' }}>
-        <div className="flex items-center gap-2">
-          <svg width="24" height="24" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <line x1="32" y1="4"  x2="32" y2="60" stroke="#1d6bff" strokeWidth="5" strokeLinecap="round"/>
-            <line x1="4"  y1="32" x2="60" y2="32" stroke="#1d6bff" strokeWidth="5" strokeLinecap="round"/>
-            <line x1="10" y1="10" x2="54" y2="54" stroke="#1d6bff" strokeWidth="5" strokeLinecap="round"/>
-            <line x1="54" y1="10" x2="10" y2="54" stroke="#1d6bff" strokeWidth="5" strokeLinecap="round"/>
-          </svg>
-          <span className="text-white font-semibold tracking-widest text-sm uppercase">Skyfri</span>
+        <div className="flex items-center">
+          <Image src="https://skyfri.com/assets/skyfri-logo-name-white-B1g7qFGC.png" alt="Skyfri" width={100} height={32} className="h-8 w-auto" />
         </div>
         <div className="hidden md:flex items-center gap-8">
           {['Product', 'Why Hardware', 'Specs', 'Contact'].map((l) => (
@@ -258,13 +253,8 @@ export default function Home() {
 
       {/* FOOTER */}
       <footer className="border-t border-blue-500/10 px-8 py-6 flex flex-col md:flex-row justify-between items-center gap-4" style={{ background: 'rgba(5,10,26,0.9)' }}>
-        <div className="flex items-center gap-2">
-          <svg width="16" height="16" viewBox="0 0 64 64" fill="none">
-            <line x1="32" y1="4"  x2="32" y2="60" stroke="#1d6bff" strokeWidth="5" strokeLinecap="round"/>
-            <line x1="4"  y1="32" x2="60" y2="32" stroke="#1d6bff" strokeWidth="5" strokeLinecap="round"/>
-            <line x1="10" y1="10" x2="54" y2="54" stroke="#1d6bff" strokeWidth="5" strokeLinecap="round"/>
-            <line x1="54" y1="10" x2="10" y2="54" stroke="#1d6bff" strokeWidth="5" strokeLinecap="round"/>
-          </svg>
+        <div className="flex items-center gap-3">
+          <Image src="https://skyfri.com/assets/skyfri-logo-name-white-B1g7qFGC.png" alt="Skyfri" width={72} height={24} className="h-5 w-auto opacity-30" />
           <span className="text-white/20 text-xs tracking-widest uppercase">© {new Date().getFullYear()} Skyfri Group AS</span>
         </div>
         <p className="text-white/10 text-xs font-mono">SSI V04 Micro · Hardware-First Solar Intelligence</p>

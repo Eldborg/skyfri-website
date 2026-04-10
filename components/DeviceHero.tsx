@@ -1,4 +1,5 @@
 'use client';
+import Image from "next/image";
 
 export default function DeviceHero() {
   return (
@@ -29,22 +30,14 @@ export default function DeviceHero() {
 
           {/* Top face — logo area */}
           <div className="absolute inset-0 flex items-center justify-center">
-            {/* Skyfri snowflake logo in SVG */}
-            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <line x1="32" y1="4"  x2="32" y2="60" stroke="#1d6bff" strokeWidth="4" strokeLinecap="round"/>
-              <line x1="4"  y1="32" x2="60" y2="32" stroke="#1d6bff" strokeWidth="4" strokeLinecap="round"/>
-              <line x1="10" y1="10" x2="54" y2="54" stroke="#1d6bff" strokeWidth="4" strokeLinecap="round"/>
-              <line x1="54" y1="10" x2="10" y2="54" stroke="#1d6bff" strokeWidth="4" strokeLinecap="round"/>
-              {/* End ticks */}
-              <line x1="32" y1="4"  x2="24" y2="12" stroke="#1d6bff" strokeWidth="2.5" strokeLinecap="round"/>
-              <line x1="32" y1="4"  x2="40" y2="12" stroke="#1d6bff" strokeWidth="2.5" strokeLinecap="round"/>
-              <line x1="32" y1="60" x2="24" y2="52" stroke="#1d6bff" strokeWidth="2.5" strokeLinecap="round"/>
-              <line x1="32" y1="60" x2="40" y2="52" stroke="#1d6bff" strokeWidth="2.5" strokeLinecap="round"/>
-              <line x1="4"  y1="32" x2="12" y2="24" stroke="#1d6bff" strokeWidth="2.5" strokeLinecap="round"/>
-              <line x1="4"  y1="32" x2="12" y2="40" stroke="#1d6bff" strokeWidth="2.5" strokeLinecap="round"/>
-              <line x1="60" y1="32" x2="52" y2="24" stroke="#1d6bff" strokeWidth="2.5" strokeLinecap="round"/>
-              <line x1="60" y1="32" x2="52" y2="40" stroke="#1d6bff" strokeWidth="2.5" strokeLinecap="round"/>
-            </svg>
+            <Image
+              src="https://skyfri.com/assets/skyfri-logo-name-white-B1g7qFGC.png"
+              alt="Skyfri"
+              width={160}
+              height={48}
+              className="w-36 h-auto"
+              style={{ filter: 'brightness(0) saturate(100%) invert(35%) sepia(90%) saturate(2000%) hue-rotate(210deg) brightness(105%)' }}
+            />
           </div>
 
           {/* Corner screws */}

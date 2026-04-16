@@ -115,12 +115,22 @@ export default function Home() {
 
       {/* AWARDS */}
       <div className="border-b border-blue-500/10" style={{ background: 'rgba(8,14,32,0.9)' }}>
-        <div className="max-w-5xl mx-auto px-8 py-10 flex flex-col items-center gap-4">
+        <div className="max-w-5xl mx-auto px-8 py-10 flex flex-col items-center gap-6">
           <p className="text-white/20 text-[10px] tracking-[0.35em] uppercase font-mono">Awards & Recognition</p>
-          <div className="flex flex-wrap items-center justify-center gap-10 md:gap-16">
-            <Image src="/award-american-made-solar.png" alt="American Made Solar Prize — U.S. Department of Energy" width={120} height={80} className="object-contain opacity-90 hover:opacity-100 transition-opacity" style={{ filter: 'brightness(1.05)' }} />
-            <Image src="/award-climate.png" alt="Climate Award" width={110} height={80} className="object-contain opacity-90 hover:opacity-100 transition-opacity" />
-            <Image src="/award-global-startup.png" alt="Global Startup Awards" width={130} height={80} className="object-contain opacity-90 hover:opacity-100 transition-opacity" style={{ filter: 'brightness(1.05)' }} />
+          <div className="flex flex-wrap items-center justify-center gap-6">
+            {[
+              { src: '/award-american-made-solar.png', alt: 'American Made Solar Prize — U.S. Department of Energy', w: 120 },
+              { src: '/award-climate.png', alt: 'Climate Award', w: 110 },
+              { src: '/award-global-startup.png', alt: 'Global Startup Awards', w: 130 },
+            ].map(({ src, alt, w }) => (
+              <div
+                key={src}
+                className="flex items-center justify-center rounded-xl px-6 py-4"
+                style={{ background: 'rgba(255,255,255,0.96)', minWidth: 160, minHeight: 90 }}
+              >
+                <Image src={src} alt={alt} width={w} height={72} className="object-contain" />
+              </div>
+            ))}
           </div>
         </div>
       </div>

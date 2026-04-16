@@ -20,6 +20,20 @@ function stripHtml(html: string): string {
     .trim();
 }
 
+function stripMarkdown(text: string): string {
+  return text
+    .replace(/#{1,6}\s+/g, '')        // headings
+    .replace(/\*\*(.+?)\*\*/g, '$1')  // bold
+    .replace(/\*(.+?)\*/g, '$1')      // italic
+    .replace(/`{1,3}[^`]*`{1,3}/g, (m) => m.replace(/`/g, '')) // code
+    .replace(/^\s*[-*+]\s+/gm, '• ')  // bullet points → •
+    .replace(/^\s*\d+\.\s+/gm, '')    // numbered lists
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') // links
+    .replace(/^---+$/gm, '')          // horizontal rules
+    .replace(/\n{3,}/g, '\n\n')       // excess blank lines
+    .trim();
+}
+
 async function searchConfluence(query: string): Promise<string> {
   try {
     // Search only public-facing spaces: KB (Knowledge base) and BRUK (Brukerdokumentasjon)
@@ -67,16 +81,25 @@ export async function POST(req: NextRequest) {
     // Pull relevant Confluence content
     const confluenceContext = await searchConfluence(latestUserMessage);
 
-    const systemPrompt = `You are Skyfri's intelligent assistant, embedded on the Skyfri website (skyfri.com). Skyfri builds hardware-first solar intelligence — the SSI V04 Micro is their flagship edge computing device for solar and battery assets.
+    const systemPrompt = `You are Sofia, Skyfri's friendly assistant on skyfri.com. Skyfri builds hardware-first solar intelligence — their flagship product is the SSI V04 Micro, an edge computing device for solar and battery assets.
 
-Your role is to help visitors understand Skyfri's products, technology, documentation, and capabilities. You are knowledgeable, concise, and technical when needed but accessible to non-technical users.
+Your personality: warm, helpful, and approachable. You make technical topics easy to understand without being condescending. You genuinely care about helping the person you're talking to.
+
+Your role: help visitors learn about Skyfri's products, technology, and how Skyfri can help them. Keep answers conversational, clear and to the point — no more than a few short paragraphs.
+
+Formatting rules — strictly follow these:
+- Never use # or ## or ### headings
+- Never use ** or * for bold or italic
+- Never use markdown formatting of any kind
+- Use plain sentences and short paragraphs
+- If listing steps or items, use a simple numbered list (1. 2. 3.) or plain bullet points with a dash (-)
 
 ${confluenceContext
-  ? `Here is relevant content pulled from Skyfri's Confluence knowledge base to help answer the user's question:\n\n${confluenceContext}\n\nUse this information to give accurate, specific answers. If the Confluence content doesn't fully answer the question, supplement with your general knowledge about Skyfri's products.`
-  : 'No specific Confluence pages matched this query. Answer based on your general knowledge of Skyfri and solar energy technology.'
+  ? `Here is relevant content from Skyfri's knowledge base to help you answer:\n\n${confluenceContext}\n\nUse this to give accurate, specific answers. If it doesn't fully cover the question, supplement with your general knowledge of Skyfri's products.`
+  : 'No specific knowledge base articles matched this query. Answer based on your general knowledge of Skyfri and solar energy technology.'
 }
 
-Keep responses concise and helpful. Use markdown formatting where appropriate. If a user asks about pricing, partnerships, or specific deployments, direct them to sales@skyfri.com.`;
+If you don't have enough information to fully answer, be honest about it and warmly invite them to reach out to the Skyfri support team at support@skyfri.com — they'll be happy to help. For sales or partnership enquiries, point them to sales@skyfri.com.`;
 
     const response = await anthropic.messages.create({
       model: 'claude-sonnet-4-6',
@@ -88,7 +111,8 @@ Keep responses concise and helpful. Use markdown formatting where appropriate. I
       })),
     });
 
-    const text = response.content[0]?.type === 'text' ? response.content[0].text : '';
+    const raw = response.content[0]?.type === 'text' ? response.content[0].text : '';
+    const text = stripMarkdown(raw);
 
     return NextResponse.json({ response: text });
   } catch (err) {

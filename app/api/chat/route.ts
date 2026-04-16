@@ -26,7 +26,7 @@ function stripMarkdown(text: string): string {
     .replace(/\*\*(.+?)\*\*/g, '$1')  // bold
     .replace(/\*(.+?)\*/g, '$1')      // italic
     .replace(/`{1,3}[^`]*`{1,3}/g, (m) => m.replace(/`/g, '')) // code
-    .replace(/^\s*[-*+]\s+/gm, '• ')  // bullet points → •
+    .replace(/^\s*[-*+]\s+/gm, '')    // bullet points — remove dash/bullet
     .replace(/^\s*\d+\.\s+/gm, '')    // numbered lists
     .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') // links
     .replace(/^---+$/gm, '')          // horizontal rules
@@ -92,7 +92,7 @@ Formatting rules — strictly follow these:
 - Never use ** or * for bold or italic
 - Never use markdown formatting of any kind
 - Use plain sentences and short paragraphs
-- If listing steps or items, use a simple numbered list (1. 2. 3.) or plain bullet points with a dash (-)
+- If listing steps or items, use a simple numbered list (1. 2. 3.) or plain sentences — no dashes or bullet symbols
 
 ${confluenceContext
   ? `Here is relevant content from Skyfri's knowledge base to help you answer:\n\n${confluenceContext}\n\nUse this to give accurate, specific answers. If it doesn't fully cover the question, supplement with your general knowledge of Skyfri's products.`

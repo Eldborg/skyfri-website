@@ -1,37 +1,24 @@
 import Image from "next/image";
-import DeviceHero from "@/components/DeviceHero";
+import Link from "next/link";
+import Nav from "@/components/Nav";
 
-const specs = [
-  { label: "Power Supply", value: "DC 24V" },
-  { label: "Connectivity", value: "RJ45 Ethernet" },
-  { label: "Serial Ports", value: "RS-485 × 2 (ISO)" },
-  { label: "Protocols", value: "Modbus, SCADA" },
-  { label: "Max Frequency", value: "< 108 MHz" },
-  { label: "Classification", value: "Class A Digital" },
-  { label: "Standard", value: "47 CFR FCC Part 15B" },
-  { label: "Form Factor", value: "DIN-Rail Mount" },
-];
 
 const pillars = [
   {
-    icon: "⚡",
     title: "Edge-native processing",
-    body: "Data is processed at the source — on the device, at the asset. No cloud dependency. No latency. No single point of failure.",
+    body: "Data is processed at the source on the device, at the asset. No cloud dependency. No latency. No single point of failure. This is how industrial intelligence was always meant to work.",
   },
   {
-    icon: "🔒",
     title: "Your data stays yours",
-    body: "In the AI era, data is the moat. SSI V04 keeps your operational data on-premise, giving you full ownership and control.",
+    body: "In the AI era, data is the moat. SSI V04 keeps your operational data on-premise, giving you full ownership and control forever. No vendor lock-in. No exposure.",
   },
   {
-    icon: "🌐",
     title: "Protocol agnostic",
-    body: "Dual isolated RS-485 ports with Modbus and SCADA support. Talks to every inverter, meter, and sensor on the market.",
+    body: "Dual isolated RS-485 ports with Modbus and SCADA support. Talks to every inverter, meter, and sensor on the market. Wherever your assets are, V04 speaks the language.",
   },
   {
-    icon: "🧠",
     title: "AI-ready architecture",
-    body: "Designed from the ground up to run inference at the edge. Plug in intelligence without ripping out infrastructure.",
+    body: "Built from the ground up to run inference at the edge. Plug in intelligence without ripping out infrastructure. The hardware is ready. The future is already here.",
   },
 ];
 
@@ -47,55 +34,30 @@ export default function Home() {
     <div className="min-h-screen">
 
       {/* NAV */}
-      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-5 border-b border-blue-500/10 backdrop-blur-md" style={{ background: 'rgba(5,10,26,0.85)' }}>
-        <div className="flex items-center">
-          <Image
-            src="/skyfri-logo-white.png"
-            alt="Skyfri"
-            width={110}
-            height={34}
-            className="h-8 w-auto"
-            style={{ filter: 'drop-shadow(0 0 8px rgba(29,107,255,0.5))' }}
-            priority
-          />
-        </div>
-        <div className="hidden md:flex items-center gap-8">
-          {['Product', 'Why Hardware', 'Specs', 'Contact'].map((l) => (
-            <a key={l} href={`#${l.toLowerCase().replace(' ', '-')}`} className="text-white/40 hover:text-white text-xs tracking-widest uppercase transition-colors">
-              {l}
-            </a>
-          ))}
-        </div>
-        <a
-          href="mailto:sales@skyfri.com"
-          className="text-xs tracking-widest uppercase px-5 py-2.5 rounded-full border border-blue-500/40 text-blue-400 hover:bg-blue-500/10 transition-all"
-        >
-          Get in touch
-        </a>
-      </nav>
+      <Nav />
 
       {/* HERO */}
-      <section className="relative min-h-screen grid-bg flex flex-col md:flex-row items-center pt-24 pb-16 px-8 md:px-16 overflow-hidden">
+      <section className="relative min-h-screen grid-bg flex flex-col md:flex-row items-center pt-28 pb-16 px-8 md:px-20 gap-12 overflow-hidden">
 
         {/* Radial glow */}
-        <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 60% 50% at 70% 50%, rgba(29,107,255,0.12) 0%, transparent 70%)' }} />
+        <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 55% 60% at 65% 50%, rgba(29,107,255,0.10) 0%, transparent 70%)' }} />
 
         {/* Left — text */}
-        <div className="relative z-10 flex-1 max-w-xl">
-          <p className="animate-fade-up text-blue-400 text-xs tracking-[0.35em] uppercase mb-6 font-mono">
-            Skyfri Solarscada · SSI V04 Micro
-          </p>
-          <h1 className="animate-fade-up delay-100 text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight mb-8">
+        <div className="relative z-10 w-full md:w-[45%] flex flex-col justify-center">
+          <h1 className="animate-fade-up text-5xl md:text-6xl lg:text-[5.5rem] font-bold leading-[1.0] tracking-tight mb-8">
             <span className="gradient-text">The intelligence</span>
             <br />
             <span className="text-white">is in the</span>
             <br />
             <span className="text-white">hardware.</span>
           </h1>
-          <p className="animate-fade-up delay-200 text-white/50 text-lg leading-relaxed mb-10 max-w-md">
-            We built the software. Now we own the edge. The SSI V04 Micro brings real-time solar intelligence directly to your assets — no cloud required.
+          <p className="animate-fade-up delay-100 text-white/50 text-base leading-relaxed mb-4">
+            Our vision is simple, every solar and battery asset, from a 50kW rooftop to a 500MW utility farm, should have an intelligent device at its core that monitors, controls, protects, and optimises it in real time.
           </p>
-          <div className="animate-fade-up delay-300 flex flex-col sm:flex-row gap-4">
+          <p className="animate-fade-up delay-200 text-white/50 text-base leading-relaxed mb-10">
+            Continuously, locally, and autonomously. No cloud dependency, no data sovereignty issues, no vendor lock-in. Just clean intelligence at every asset, everywhere on earth.
+          </p>
+          <div className="animate-fade-up delay-300 flex flex-col sm:flex-row gap-4 mb-10">
             <a
               href="mailto:sales@skyfri.com"
               className="flex items-center justify-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold text-white transition-all hover:scale-105"
@@ -103,16 +65,14 @@ export default function Home() {
             >
               Request Early Access
             </a>
-            <a
-              href="#product"
+            <Link
+              href="/product"
               className="flex items-center justify-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold text-white/60 border border-white/10 hover:border-blue-500/40 hover:text-white transition-all"
             >
               See the device ↓
-            </a>
+            </Link>
           </div>
-
-          {/* Trust badges */}
-          <div className="animate-fade-up delay-500 flex flex-wrap gap-3 mt-10">
+          <div className="animate-fade-up delay-500 flex flex-wrap gap-2">
             {['FCC Certified', 'Patent Pending', 'ISO RS-485', 'DIN-Rail'].map((b) => (
               <span key={b} className="text-[10px] tracking-widest uppercase text-blue-400/70 border border-blue-500/20 px-3 py-1.5 rounded-full font-mono">
                 {b}
@@ -121,9 +81,17 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Right — device */}
-        <div className="animate-fade-in delay-300 flex-1 relative flex items-center justify-center mt-16 md:mt-0" style={{ minHeight: 500 }}>
-          <DeviceHero />
+        {/* Right — video */}
+        <div className="animate-fade-in delay-200 w-full md:w-[55%] flex items-center justify-center">
+          <video
+            src="/device-hero.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full rounded-3xl"
+            style={{ mixBlendMode: 'lighten' }}
+          />
         </div>
       </section>
 
@@ -131,9 +99,9 @@ export default function Home() {
       <div className="border-y border-blue-500/10" style={{ background: 'rgba(10,18,40,0.8)' }}>
         <div className="max-w-5xl mx-auto px-8 py-6 flex flex-wrap justify-around gap-6">
           {[
-            { n: 'DC 24V', l: 'Power Supply' },
-            { n: '< 108MHz', l: 'Max Frequency' },
-            { n: '2×', l: 'RS-485 ISO Ports' },
+            { n: '$10M+', l: 'R&D Invested' },
+            { n: '100+', l: 'Devices Deployed' },
+            { n: '10+', l: 'Years of Research' },
             { n: 'FCC', l: 'Part 15B Certified' },
             { n: 'PCT', l: 'Patent Filed' },
           ].map(({ n, l }) => (
@@ -150,17 +118,16 @@ export default function Home() {
         <div className="mb-16">
           <p className="text-blue-400 text-xs tracking-[0.35em] uppercase font-mono mb-4">The Shift</p>
           <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight max-w-2xl">
-            In the AI era, the edge is everything.
+            We spent a decade learning what the industry gets wrong.
           </h2>
           <p className="text-white/40 text-lg mt-6 max-w-xl leading-relaxed">
-            Software is commoditised. Anyone can build a dashboard. But the companies that own the physical layer — the hardware at the asset — own the data, the latency advantage, and the future.
+            Founded in 2021 by solar veterans with a singular obsession: solve the real, hard, unglamorous problems that solar power plant owners face every day. We have invested over $10 million USD into R&D not on pitch decks, but on hardware and software that actually works in the field. The result is V04. Everything we know, built into one device. We call it the heart of solar.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {pillars.map((p) => (
             <div key={p.title} className="card-glass rounded-2xl p-8 hover:border-blue-500/30 transition-all group">
-              <div className="text-3xl mb-5">{p.icon}</div>
               <h3 className="text-white font-semibold text-lg mb-3 group-hover:text-blue-300 transition-colors">{p.title}</h3>
               <p className="text-white/40 leading-relaxed text-sm">{p.body}</p>
             </div>
@@ -168,62 +135,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PRODUCT */}
-      <section id="product" className="py-32 px-8 md:px-16 border-t border-blue-500/10" style={{ background: 'rgba(10,18,40,0.5)' }}>
-        <div className="max-w-6xl mx-auto">
-          <div className="mb-16">
-            <p className="text-blue-400 text-xs tracking-[0.35em] uppercase font-mono mb-4">The Device</p>
-            <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">SSI V04 Micro</h2>
-            <p className="text-white/40 text-lg mt-4 max-w-lg leading-relaxed">
-              Compact. Certified. Built for the field. Every solar asset deserves intelligence at the edge.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-            {/* Specs table */}
-            <div className="space-y-0 card-glass rounded-2xl overflow-hidden">
-              {specs.map((s, i) => (
-                <div
-                  key={s.label}
-                  className={`flex items-center justify-between px-6 py-4 ${i < specs.length - 1 ? 'border-b border-blue-500/10' : ''}`}
-                >
-                  <span className="text-white/40 text-sm">{s.label}</span>
-                  <span className="text-white font-mono text-sm font-medium">{s.value}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* Feature highlight */}
-            <div className="space-y-6">
-              <div className="card-glass rounded-2xl p-6 border border-blue-500/20">
-                <p className="text-blue-400 text-xs tracking-widest uppercase font-mono mb-3">FCC Test Result</p>
-                <p className="text-3xl font-bold text-white mb-1">PASS</p>
-                <p className="text-white/30 text-sm">47 CFR FCC Part 15, Subpart B · Ref: WTF25X10267061E</p>
-                <p className="text-white/20 text-xs mt-2 font-mono">Tested by Waltek Testing Group · 2025-10-28</p>
-              </div>
-
-              <div className="card-glass rounded-2xl p-6">
-                <p className="text-blue-400 text-xs tracking-widest uppercase font-mono mb-3">Trade Name</p>
-                <p className="text-2xl font-bold text-white mb-1">Skyfri Solarscada</p>
-                <p className="text-white/30 text-sm">Manufactured by Skyfri Group AS · Apotekergata 10, Oslo</p>
-              </div>
-
-              <div className="card-glass rounded-2xl p-6">
-                <p className="text-blue-400 text-xs tracking-widest uppercase font-mono mb-3">Interface Modules</p>
-                <p className="text-white text-sm leading-relaxed">
-                  Dual <span className="text-blue-300 font-mono">RS-485 ISO Interface Modules</span> — galvanically isolated, designed for harsh industrial environments.
-                </p>
-                <p className="text-white/20 text-xs mt-2 font-mono">© Skyfri SolarSCADA · G. Linder 2024 · V01B</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* CERTIFICATIONS */}
       <section id="specs" className="py-32 px-8 md:px-16 max-w-6xl mx-auto">
         <p className="text-blue-400 text-xs tracking-[0.35em] uppercase font-mono mb-4">Compliance & IP</p>
-        <h2 className="text-4xl font-bold text-white mb-16">Built to the highest standards.</h2>
+        <h2 className="text-4xl font-bold text-white mb-16">No shortcuts. No compromises.</h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
           {badges.map((b) => (
@@ -241,12 +156,12 @@ export default function Home() {
       {/* CTA */}
       <section id="contact" className="py-32 px-8 md:px-16 border-t border-blue-500/10" style={{ background: 'rgba(10,18,40,0.7)' }}>
         <div className="max-w-3xl mx-auto text-center">
-          <p className="text-blue-400 text-xs tracking-[0.35em] uppercase font-mono mb-6">Early Access</p>
+          <p className="text-blue-400 text-xs tracking-[0.35em] uppercase font-mono mb-6">Scale With Us</p>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Be first to own the edge.
+            We&apos;ve proven it. Now we&apos;re scaling it.
           </h2>
           <p className="text-white/40 text-lg leading-relaxed mb-10 max-w-xl mx-auto">
-            We are working with a select group of partners for the first deployment of the SSI V04 Micro. If you operate solar assets and want real edge intelligence, reach out.
+            More than 100 devices running live in the field. Years of real-world data. A platform that has been tested in the harshest conditions on earth and never flinched. We know what we are talking about. We are veterans in this industry. And we are just getting started. If you operate solar assets and want to be part of what comes next, now is the time.
           </p>
           <a
             href="mailto:sales@skyfri.com"
@@ -255,7 +170,18 @@ export default function Home() {
           >
             sales@skyfri.com
           </a>
-          <p className="text-white/20 text-xs mt-6 tracking-widest uppercase">Oslo, Norway · skyfri.com</p>
+          <div className="flex flex-col sm:flex-row justify-center gap-10 mt-12 pt-10 border-t border-blue-500/10">
+            <div className="text-center">
+              <p className="text-white/30 text-[10px] tracking-widest uppercase font-mono mb-2">Skyfri Group AS</p>
+              <p className="text-white/20 text-xs">Torggata 11</p>
+              <p className="text-white/20 text-xs">0181 Oslo, Norway</p>
+            </div>
+            <div className="text-center">
+              <p className="text-white/30 text-[10px] tracking-widest uppercase font-mono mb-2">Skyfri Corp</p>
+              <p className="text-white/20 text-xs">6547 North Academy Blvd</p>
+              <p className="text-white/20 text-xs">CO 80918 Colorado Springs, USA</p>
+            </div>
+          </div>
         </div>
       </section>
 

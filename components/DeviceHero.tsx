@@ -27,20 +27,27 @@ export default function DeviceHero() {
           {/* Scan line */}
           <div className="scan-line" />
 
-          {/* Top face — Skyfri mark */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
-            {/* Skyfri mark — 4 bent arms pinwheel */}
-            <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-              {/* NW arm: diagonal NW then bends N */}
-              <path d="M26 26 L14 14 L14 4" stroke="#1d6bff" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round"/>
-              {/* SW arm: diagonal SW then bends W */}
-              <path d="M26 26 L14 38 L4 38" stroke="#1d6bff" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round"/>
-              {/* SE arm: diagonal SE then bends S */}
-              <path d="M26 26 L38 38 L38 48" stroke="#1d6bff" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round"/>
-              {/* NE arm: diagonal NE then bends E */}
-              <path d="M26 26 L38 14 L48 14" stroke="#1d6bff" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-            <p className="text-[#1d6bff] text-[9px] tracking-[0.25em] uppercase font-semibold" style={{ fontFamily: 'var(--font-geist-sans)' }}>Skyfri</p>
+          {/* Top face — Skyfri mark on dark blue badge */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div style={{
+              width: 90,
+              height: 90,
+              borderRadius: 16,
+              background: '#0c1535',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              boxShadow: '0 4px 24px rgba(0,0,0,0.35)',
+            }}>
+              {/* Skyfri mark — 3 arms, bend faces inward, ends fan outward */}
+              <svg width="58" height="58" viewBox="-50 -50 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g stroke="white" strokeWidth="11" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="-30,20 0,-13 30,20"/>
+                  <polyline points="-30,20 0,-13 30,20" transform="rotate(120)"/>
+                  <polyline points="-30,20 0,-13 30,20" transform="rotate(240)"/>
+                </g>
+              </svg>
+            </div>
           </div>
 
           {/* Corner screws */}

@@ -15,8 +15,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Skyfri — Hardware-First Solar Intelligence",
+  title: "Skyfri Hardware-First Solar Intelligence",
   description: "The SSI V04 Micro. Edge computing for solar assets. FCC certified. AI-ready.",
+  icons: {
+    icon: '/favicon.png',
+    shortcut: '/favicon.png',
+  },
 };
 
 export default function RootLayout({

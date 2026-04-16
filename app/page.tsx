@@ -113,6 +113,18 @@ export default function Home() {
         </div>
       </div>
 
+      {/* AWARDS */}
+      <div className="border-b border-blue-500/10" style={{ background: 'rgba(8,14,32,0.9)' }}>
+        <div className="max-w-5xl mx-auto px-8 py-10 flex flex-col items-center gap-4">
+          <p className="text-white/20 text-[10px] tracking-[0.35em] uppercase font-mono">Awards & Recognition</p>
+          <div className="flex flex-wrap items-center justify-center gap-10 md:gap-16">
+            <Image src="/award-american-made-solar.png" alt="American Made Solar Prize — U.S. Department of Energy" width={120} height={80} className="object-contain opacity-90 hover:opacity-100 transition-opacity" style={{ filter: 'brightness(1.05)' }} />
+            <Image src="/award-climate.png" alt="Climate Award" width={110} height={80} className="object-contain opacity-90 hover:opacity-100 transition-opacity" />
+            <Image src="/award-global-startup.png" alt="Global Startup Awards" width={130} height={80} className="object-contain opacity-90 hover:opacity-100 transition-opacity" style={{ filter: 'brightness(1.05)' }} />
+          </div>
+        </div>
+      </div>
+
       {/* WHY HARDWARE */}
       <section id="why-hardware" className="py-32 px-8 md:px-16 max-w-6xl mx-auto">
         <div className="mb-16">

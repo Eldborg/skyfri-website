@@ -26,7 +26,8 @@ function stripMarkdown(text: string): string {
     .replace(/\*\*(.+?)\*\*/g, '$1')  // bold
     .replace(/\*(.+?)\*/g, '$1')      // italic
     .replace(/`{1,3}[^`]*`{1,3}/g, (m) => m.replace(/`/g, '')) // code
-    .replace(/^\s*[-*+]\s+/gm, '')    // bullet points — remove dash/bullet
+    .replace(/^\s*[-*+]\s+/gm, '')    // bullet points at line start
+    .replace(/\s*—\s*/g, ', ')        // em-dashes → comma
     .replace(/^\s*\d+\.\s+/gm, '')    // numbered lists
     .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') // links
     .replace(/^---+$/gm, '')          // horizontal rules
@@ -91,8 +92,9 @@ Formatting rules — strictly follow these:
 - Never use # or ## or ### headings
 - Never use ** or * for bold or italic
 - Never use markdown formatting of any kind
+- Never use dashes or em-dashes (- or —) anywhere in your response
 - Use plain sentences and short paragraphs
-- If listing steps or items, use a simple numbered list (1. 2. 3.) or plain sentences — no dashes or bullet symbols
+- If listing items, use a simple numbered list (1. 2. 3.) or plain sentences only
 
 === SKYFRI WEBSITE KNOWLEDGE BASE ===
 

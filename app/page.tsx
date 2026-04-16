@@ -63,7 +63,7 @@ export default function Home() {
               className="flex items-center justify-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold text-white transition-all hover:scale-105"
               style={{ background: 'linear-gradient(135deg, #1d6bff, #0ea5e9)' }}
             >
-              Request Early Access
+              Buy Now
             </a>
             <Link
               href="/product"

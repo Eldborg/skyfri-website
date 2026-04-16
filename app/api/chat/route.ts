@@ -22,8 +22,8 @@ function stripHtml(html: string): string {
 
 async function searchConfluence(query: string): Promise<string> {
   try {
-    // Search across all spaces
-    const searchUrl = `${CONFLUENCE_BASE}/wiki/rest/api/content/search?cql=text~"${encodeURIComponent(query)}" AND type=page&limit=5&expand=body.storage,title,space`;
+    // Search only public-facing spaces: KB (Knowledge base) and BRUK (Brukerdokumentasjon)
+    const searchUrl = `${CONFLUENCE_BASE}/wiki/rest/api/content/search?cql=text~"${encodeURIComponent(query)}" AND type=page AND space in ("KB","BRUK")&limit=5&expand=body.storage,title,space`;
 
     const res = await fetch(searchUrl, {
       headers: {

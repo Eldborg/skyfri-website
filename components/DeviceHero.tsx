@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 
 export default function DeviceHero() {
   return (
@@ -39,14 +40,7 @@ export default function DeviceHero() {
               justifyContent: 'center',
               boxShadow: '0 4px 24px rgba(0,0,0,0.35)',
             }}>
-              {/* Skyfri mark — 3 arms, bend faces inward, ends fan outward */}
-              <svg width="58" height="58" viewBox="-50 -50 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g stroke="white" strokeWidth="11" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="-30,20 0,-13 30,20"/>
-                  <polyline points="-30,20 0,-13 30,20" transform="rotate(120)"/>
-                  <polyline points="-30,20 0,-13 30,20" transform="rotate(240)"/>
-                </g>
-              </svg>
+              <Image src="/favicon.png" alt="Skyfri" width={58} height={58} style={{ borderRadius: 8 }} />
             </div>
           </div>
 

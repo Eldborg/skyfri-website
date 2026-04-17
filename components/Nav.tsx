@@ -41,10 +41,10 @@ export default function Nav() {
             </Link>
           ))}
           <a
-            href="mailto:sales@skyfri.com"
+            href="https://app.skyfri.com"
             className="text-xs tracking-widest uppercase px-5 py-2.5 rounded-full border border-blue-500/40 text-blue-400 hover:bg-blue-500/10 transition-all"
           >
-            Get in touch
+            Login
           </a>
         </div>
 
@@ -80,11 +80,11 @@ export default function Nav() {
             ))}
           </div>
           <a
-            href="mailto:sales@skyfri.com"
+            href="https://app.skyfri.com"
             className="flex items-center justify-center px-7 py-3.5 rounded-full text-white text-xs tracking-widest uppercase font-mono transition-all border border-blue-500/40 hover:bg-blue-500/10"
             onClick={() => setOpen(false)}
           >
-            Get in touch
+            Login
           </a>
         </div>
       )}
